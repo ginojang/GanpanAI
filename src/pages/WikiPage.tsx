@@ -10,17 +10,14 @@ export default function WikiPage() {
   useEffect(() => {
     const pathname = location.pathname;
 
-    let slug = '';
+    let slug = pathname.replace(/^\/wiki\/?/, '');
 
-    if (pathname === '/wiki' || pathname === '/wiki/') {
-      slug = 'index';
-    } else if (pathname.startsWith('/wiki/')) {
-      slug = pathname.substring('/wiki/'.length);
-    } else {
+    if (!slug) {
       slug = 'index';
     }
 
     const mdPath = `/wiki/${slug}.md`;
+
     console.log('pathname:', pathname);
     console.log('slug:', slug);
     console.log('mdPath:', mdPath);
