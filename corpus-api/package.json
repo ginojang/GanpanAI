@@ -1,5 +1,5 @@
 {
-  "name": "memdb-wiki-api",
+  "name": "corpus-api",
   "private": true,
   "type": "module",
   "scripts": {

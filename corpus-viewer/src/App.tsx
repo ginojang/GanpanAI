@@ -14,7 +14,7 @@ type WikiPage = {
   exists: boolean;
 };
 
-const API_BASE = 'api/wiki';
+const API_BASE = '/corpus/api/1.0';
 
 function normalizeMarkdownForView(content: string): string {
   const normalized = content

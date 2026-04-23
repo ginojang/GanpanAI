@@ -7,9 +7,9 @@ import {
   writeWikiPage
 } from '../services/wikiFs.js';
 
-export const wikiRouter = Router();
+export const corpusRouter = Router();
 
-wikiRouter.get('/tree', async (req, res) => {
+corpusRouter.get('/tree', async (req, res) => {
   try {
     const dirPath = String(req.query.path ?? '');
     const items = await listWikiDir(dirPath);
@@ -19,7 +19,7 @@ wikiRouter.get('/tree', async (req, res) => {
   }
 });
 
-wikiRouter.get('/page', async (req, res) => {
+corpusRouter.get('/page', async (req, res) => {
   try {
     const pagePath = String(req.query.path ?? '');
     if (!pagePath) {
@@ -33,7 +33,7 @@ wikiRouter.get('/page', async (req, res) => {
   }
 });
 
-wikiRouter.put('/page', async (req, res) => {
+corpusRouter.put('/page', async (req, res) => {
   try {
     const { path, content } = req.body as { path?: string; content?: string };
     if (!path) {
@@ -50,7 +50,7 @@ wikiRouter.put('/page', async (req, res) => {
   }
 });
 
-wikiRouter.delete('/page', async (req, res) => {
+corpusRouter.delete('/page', async (req, res) => {
   try {
     const pagePath = String(req.query.path ?? '');
     if (!pagePath) {
@@ -64,7 +64,7 @@ wikiRouter.delete('/page', async (req, res) => {
   }
 });
 
-wikiRouter.post('/dir', async (req, res) => {
+corpusRouter.post('/dir', async (req, res) => {
   try {
     const { path } = req.body as { path?: string };
     if (!path) {

@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
+      '/corpus': {
         target: 'http://localhost:3100',
         changeOrigin: true,
       },

@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { WIKI_ROOT } from '../config.js';
+import { CORPUS_ROOT } from '../config.js';
 import { assertSafeRelativePath, ensureMdExt, extractTitleFromMd, normalizeWikiPath } from '../utils/path.js';
 import type { WikiNode, WikiPage } from '../types.js';
 
@@ -8,7 +8,7 @@ function resolveFsPath(wikiPath: string, asFile = false): string {
   const normalized = normalizeWikiPath(wikiPath);
   const relPath = asFile ? ensureMdExt(normalized) : normalized;
   assertSafeRelativePath(relPath);
-  return path.join(WIKI_ROOT, relPath);
+  return path.join(CORPUS_ROOT, relPath);
 }
 
 async function exists(targetPath: string): Promise<boolean> {
@@ -21,7 +21,7 @@ async function exists(targetPath: string): Promise<boolean> {
 }
 
 export async function ensureWikiRoot(): Promise<void> {
-  await fs.mkdir(WIKI_ROOT, { recursive: true });
+  await fs.mkdir(CORPUS_ROOT, { recursive: true });
 }
 
 
