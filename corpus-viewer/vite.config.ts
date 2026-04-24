@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/corpus': {
-        target: 'http://localhost:3100',
+        target: 'http://ec2-43-203-248-68.ap-northeast-2.compute.amazonaws.com',
         changeOrigin: true,
       },
     },

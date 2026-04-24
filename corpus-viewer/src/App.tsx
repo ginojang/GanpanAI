@@ -62,7 +62,7 @@ function normalizeMarkdownForView(content: string): string {
 export default function App() {
   const [tree, setTree] = useState<Record<string, WikiNode[]>>({ '': [] });
   const [expanded, setExpanded] = useState<Record<string, boolean>>({ '': true });
-  const [selectedPath, setSelectedPath] = useState<string>('');
+  //const [selectedPath, setSelectedPath] = useState<string>('');
   const [page, setPage] = useState<WikiPage | null>(null);
 
   const normalizedContent = page ? normalizeMarkdownForView(page.content) : '';
@@ -86,7 +86,7 @@ export default function App() {
     const data = await res.json();
 
     if (data.ok) {
-      setSelectedPath(path);
+      //setSelectedPath(path);
       setPage(data.page);
     }
   }
@@ -133,8 +133,8 @@ export default function App() {
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh', textAlign: 'left'  }}>
-      
+    <div style={{ display: 'flex', height: '100vh', textAlign: 'left' }}>
+
       {/* 좌측 트리 */}
       <div style={{
         width: 300,
@@ -146,7 +146,7 @@ export default function App() {
         <div
           style={{ cursor: 'pointer', marginBottom: 10 }}
           onClick={() => {
-            setSelectedPath('');
+            //setSelectedPath('');
             setPage(null);
           }}
         >
@@ -168,89 +168,89 @@ export default function App() {
           <div>문서가 존재하지 않습니다</div>
         )}
 
- {page && page.exists && (
+        {page && page.exists && (
           <>
             <h2 style={{ textAlign: 'left' }}>{page.title}</h2>
 
             <div style={{ fontSize: 14, lineHeight: 1.6, textAlign: 'left' }}>
-             
-             <ReactMarkdown
-  components={{
-    h1: ({ children }) => (
-      <h1
-        style={{
-          textAlign: 'left',
-          marginTop: 16,
-          marginBottom: 8,
-        }}
-      >
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2
-        style={{
-          textAlign: 'left',
-          marginTop: 40,
-          marginBottom: 12,
-        }}
-      >
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3
-        style={{
-          textAlign: 'left',
-          marginTop: 16,
-          marginBottom: 8,
-        }}
-      >
-        {children}
-      </h3>
-    ),
-    p: ({ children }) => (
-      <p
-        style={{
-          textAlign: 'left',
-          marginBottom: 8,
-        }}
-      >
-        {children}
-      </p>
-    ),
-    hr: () => (
-      <hr
-        style={{
-          margin: '12px 0',
-        }}
-      />
-    ),
-    ul: ({ children }) => (
-      <ul
-        style={{
-          paddingLeft: 20,
-          listStylePosition: 'outside',
-          marginBottom: 8,
-        }}
-      >
-        {children}
-      </ul>
-    ),
-    li: ({ children }) => (
-      <li
-        style={{
-          display: 'list-item',
-          textAlign: 'left',
-        }}
-      >
-        {children}
-      </li>
-    ),
-  }}
->
-  {normalizedContent}
-</ReactMarkdown>
+
+              <ReactMarkdown
+                components={{
+                  h1: ({ children }) => (
+                    <h1
+                      style={{
+                        textAlign: 'left',
+                        marginTop: 16,
+                        marginBottom: 8,
+                      }}
+                    >
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2
+                      style={{
+                        textAlign: 'left',
+                        marginTop: 40,
+                        marginBottom: 12,
+                      }}
+                    >
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3
+                      style={{
+                        textAlign: 'left',
+                        marginTop: 16,
+                        marginBottom: 8,
+                      }}
+                    >
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p
+                      style={{
+                        textAlign: 'left',
+                        marginBottom: 8,
+                      }}
+                    >
+                      {children}
+                    </p>
+                  ),
+                  hr: () => (
+                    <hr
+                      style={{
+                        margin: '12px 0',
+                      }}
+                    />
+                  ),
+                  ul: ({ children }) => (
+                    <ul
+                      style={{
+                        paddingLeft: 20,
+                        listStylePosition: 'outside',
+                        marginBottom: 8,
+                      }}
+                    >
+                      {children}
+                    </ul>
+                  ),
+                  li: ({ children }) => (
+                    <li
+                      style={{
+                        display: 'list-item',
+                        textAlign: 'left',
+                      }}
+                    >
+                      {children}
+                    </li>
+                  ),
+                }}
+              >
+                {normalizedContent}
+              </ReactMarkdown>
 
 
             </div>

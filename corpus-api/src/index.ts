@@ -18,7 +18,7 @@ app.use(API_BASE, corpusRouter);
 async function bootstrap(): Promise<void> {
   await ensureWikiRoot();
 
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`[corpus-api] listening on http://localhost:${PORT}`);
     console.log(`[corpus-api] root: ${CORPUS_ROOT}`);
   });
